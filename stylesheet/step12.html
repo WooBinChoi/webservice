@@ -12,10 +12,9 @@
         #two {
             display : inline;
             width : 1000px;
-            height : 500px;
+            height: 500px;
             margin : 500px 10px 500px 10px;
             padding : 100px 100px 100px 100px;
-            border : 1px solid black;
         }
         #three {
             display : inline-block;
@@ -39,14 +38,17 @@
     <div>Lorem Ipsum is simply dummy text</div>
     <script>
         let isOn = true;
-        document.getElementById("showBtn").addEventListener("click", function(){});
+        document
+        .getElementById("showBtn")
+        .addEventListener("click",function(){
             if(isOn){
                 document.getElementById("one").style.display = "block";
                 isOn = false;
-            } else {
+            }else{
                 document.getElementById("one").style.display = "none";
                 isOn = true;
             }
+        });
     </script>
 </body>
 </html>
