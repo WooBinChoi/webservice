@@ -2,32 +2,39 @@
 <html lang="ko">
 <head>
 	<meta charset="UTF-8">
-    <title>jquery selector</title>
+    <title>jquery traversing</title>
     <script src="../js/jquery-3.6.0.js"></script>
     <script type="text/javascript">
 		$(function(){
-            //$('div').addClass('s');//element selector
-            //$('.third.sung').addClass('s');//class selector
-            //$('#root').addClass('s');//id selector
-            //$('#root > div').addClass('s');//child selector
-            //$('#root div').addClass('s');//descendant selector
-            //$('li:nth-child(2)').addClass('s');
-            //$('li:nth(2)').addClass('s');
-            //$('li:even').addClass('s');
-            //$('li:odd').addClass('s');
-            //$('li:gt(2)').addClass('s');
-            $('li:lt(2)').addClass('s');
+			//$('li').eq(0).addClass('s');
+        	//$('li').first().addClass('s');
+			//$('li').not(':even').addClass('s');
+			$('li').each(function(index, element){
+				console.log(index + "," + $(element).text());	
+			});
+			$('li').each(function(index){
+				console.log(index + "," + $(this).text());
+			});
+			//$('#root').children().addClass('s');	
+			//$('#root > div').addClass('s');
+			//현재 element를 포함해서 가장 가까운 부모 element를 찾는다.
+			//조건이 현재 element면 현재 element를, 
+			//현재 element가 아니면 부모 element 중 하나만 반환한다.
+			//$('li').closest('div').addClass('s');
+			//$('#root').find('li').addClass('s');
+			//$('#root').find('li').first().addClass('s');
+			//$('#root').find('li').first().next().addClass('s');
+			//$('#root').find('li').first().nextAll().addClass('s');
+			$('#root').find('li').first().nextAll().each(function(index){
+				$(this).text('li'+index);
+			});
 
-            /*자바스크립트
-            document.getElementById("btn")
-            .addEventListener("click", function(){
-                document.getElementById("root").style.display = "block";
-            });
-            */
+			//$('#root').find('li').parent().addClass('s');
+			//$('#root').find('li').parents().addClass('s');
+			//$('li').eq(2).prev().addClass('s');
+			//$('li').eq(2).prevAll().addClass('s');
+			$('li').eq(2).siblings().addClass('s');
 
-            $("#btn").click(function(){
-                $('#root').css("display", "block");
-            });
         });
        
     </script>
@@ -64,9 +71,7 @@
 	</style>
 </head>
 <body>
-	<div id="header">
-        <button id="btn">보여줘...</button>
-    </div>
+
 	<div id="panel">
 		<div id="root">
 			div id="root"
